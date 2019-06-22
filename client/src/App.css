@@ -1,0 +1,17 @@
+.left {
+    float: left;
+}
+.right{
+    float: right;
+}
+.btn-sm {
+    border-radius: 1.2rem;
+}
+
+.btn-outline-danger.btn-sm.right{
+     margin: 0 10px;
+ }
+
+.btn-outline-primary.btn-sm.right{
+    margin: 0 10px;
+}
