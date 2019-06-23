@@ -7,12 +7,12 @@ class ServerList extends Component {
         this.props.deleteServer(id)
     };
 
-    onToggleOff = () => {
-        this.props.turnOffServer()
+    onToggleOff = (id) => {
+        this.props.turnOffServer(id)
     };
 
-    onToggleOn = () => {
-        this.props.turnOnServer()
+    onToggleOn = (id) => {
+        this.props.turnOnServer(id)
     };
 
     render() {

@@ -46,13 +46,26 @@ class App extends Component {
         })
     };
 
-    turnOffServer = () => {
-        this.componentDidMount()
+    turnOffServer = (id) => {
+        const {servers} = this.state;
+        const server = servers.find(server => server.id === id);
+        server.status = 0;
+        this.setState({
+            servers: Object.assign(servers, server.status)
+        })
+
+
     };
 
-    turnOnServer = () => {
-        this.componentDidMount()
+    turnOnServer = (id) => {
+        const {servers} = this.state;
+        const server = servers.find(server => server.id === id);
+        server.status = 1;
+        this.setState({
+            servers: Object.assign(servers, server.status)
+        })
     };
+
     addServer = (serverItem) => {
         const {servers} = this.state;
         const alias = serverItem.alias;
@@ -85,8 +98,10 @@ class App extends Component {
                 <h3>Servers App</h3>
                 <AddServer servers={servers} hosts={hosts} addServer={this.addServer}/>
                 {filterActiveServers ?
-                    <button className="btn btn-outline-secondary btn-sm" onClick={this.showAllServers}>Show All servers</button> :
-                    <button className="btn btn-outline-success btn-sm" onClick={this.showActiveServers}>Show active servers</button>
+                    <button className="btn btn-outline-secondary btn-sm" onClick={this.showAllServers}>Show All
+                        servers</button> :
+                    <button className="btn btn-outline-success btn-sm" onClick={this.showActiveServers}>Show active
+                        servers</button>
                 }
                 <ServerList servers={servers} deleteServer={this.deleteServer} turnOffServer={this.turnOffServer}
                             turnOnServer={this.turnOnServer}/>

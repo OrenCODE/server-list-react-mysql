@@ -18,7 +18,6 @@ class AddServer extends Component {
             .catch(err => console.log(err));
     }
 
-
     onServerSelect = (event) => {
         const selectedIndex = event.target.options.selectedIndex;
         const selectedValue = event.target.value;

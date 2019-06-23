@@ -42,7 +42,7 @@ class ServerItem extends Component {
         axios.put(`http://localhost:4007/servers/${id}`, {status})
             .then(res => {
                 if (res.status === 200) {
-                    onToggleOff();
+                    onToggleOff(id);
                     console.log('success server shut down')
                 } else {
                     console.error('could not find server')
@@ -58,7 +58,7 @@ class ServerItem extends Component {
         axios.put(`http://localhost:4007/servers/${id}`, {status})
             .then(res => {
                 if (res.status === 200) {
-                    onToggleOn();
+                    onToggleOn(id);
                     console.log('success server up')
                 } else {
                     console.error('could not find server')
