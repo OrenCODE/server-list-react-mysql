@@ -10,8 +10,8 @@ class ServerItem extends Component {
                 <div>Server Alias: {server.alias}</div>
                 <div>On IP: {server.ip}</div>
                 {server.status === 1 ? <div>Status: On</div> : <div>Status: Off</div>}
-                <div>Host Name:{server.name}</div>
-                <button className="btn btn-danger btn-sm right" onClick={() => this.deleteEmail(server.id)}>X</button>
+                <div className="inline">Host Name: {server.name}</div>
+                <button className="btn btn-danger btn-sm right" onClick={() => this.deleteServer(server.id)}>X</button>
                 {server.status === 1 ?
                     <button className="btn btn-outline-danger btn-sm right"
                             onClick={() => this.toggleOffServer(server.id)}>turn off</button> :
@@ -22,7 +22,7 @@ class ServerItem extends Component {
         );
     }
 
-    deleteEmail = (id) => {
+    deleteServer = (id) => {
         const {onDelete} = this.props;
         axios.delete(`http://localhost:4007/servers/${id}`)
             .then(res => {

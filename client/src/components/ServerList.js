@@ -18,7 +18,7 @@ class ServerList extends Component {
     render() {
         const {servers} = this.props;
         return (
-            <div className="card">
+            <div className="card list">
                 <ul className="list-group list-group-flush">
                     {servers.map((server) => {
                         return (

@@ -43,7 +43,7 @@ class AddServer extends Component {
             hostingId: hostingId
         };
 
-        ValidateIpAddress(ip);
+        // Checks if the IP is Valid, if so, add server to the database.
         if (ValidateIpAddress(ip)) {
             this.props.addServer(newServer);
         } else {

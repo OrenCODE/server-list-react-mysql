@@ -4,7 +4,6 @@ import axios from 'axios';
 import AddServer from './components/AddServer';
 import ServerList from './components/ServerList';
 
-import "react-datepicker/dist/react-datepicker.css";
 import './App.css';
 
 class App extends Component {
@@ -15,17 +14,20 @@ class App extends Component {
             servers: [],
             filterActiveServers: false,
             currentServers: [],
+            isLoading: true,
             errors: {}
         }
     }
 
-    componentDidMount = () => {
-        axios.get('http://localhost:4007/servers')
-            .then(res => this.setState({
-                servers: res.data,
-                filterActiveServers: false
-            }))
-            .catch(err => console.log(err.response.data));
+    componentDidMount() {
+        try {
+            axios.get('http://localhost:4007/servers')
+                .then(res => this.setState({
+                    servers: res.data,
+                    filterActiveServers: false,
+                    isLoading: false
+                }))
+        } catch (error) {console.log(error)}
     };
 
     showActiveServers = () => {
@@ -53,8 +55,6 @@ class App extends Component {
         this.setState({
             servers: Object.assign(servers, server.status)
         })
-
-
     };
 
     turnOnServer = (id) => {
@@ -80,7 +80,6 @@ class App extends Component {
                 const newServer = {id, alias, ip, status, hostingId, name};
                 this.setState({servers: servers.concat(newServer)})
             }).catch(err => this.setState({errors: err.response.data}))
-
     };
 
     deleteServer = (id) => {
@@ -92,7 +91,10 @@ class App extends Component {
     };
 
     render() {
-        const {servers, hosts, filterActiveServers} = this.state;
+        const {servers, hosts, filterActiveServers, isLoading} = this.state;
+        if (isLoading) {
+            return <div>LOADING SERVERS...</div>
+        }
         return (
             <div className="container">
                 <h3>Servers App</h3>

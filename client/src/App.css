@@ -15,3 +15,11 @@
 .btn-outline-primary.btn-sm.right{
     margin: 0 10px;
 }
+
+.list {
+    margin: 10px 0;
+}
+
+.inline {
+    display: inline-block;
+}
